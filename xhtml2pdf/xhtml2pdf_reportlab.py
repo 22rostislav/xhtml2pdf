@@ -43,6 +43,7 @@ except:
         PILImage = None
 
 from six import reraise, StringIO, string_types
+from io import BytesIO
 
 log = logging.getLogger("xhtml2pdf")
 
@@ -499,7 +500,7 @@ class PmlImage(Flowable, PmlMaxHeightMixIn):
         return self.dWidth, self.dHeight
 
     def getImage(self):
-        img = PmlImageReader(StringIO(self._imgdata))
+        img = PmlImageReader(BytesIO(self._imgdata))
         return img
 
     def draw(self):
